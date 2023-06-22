@@ -42,27 +42,30 @@ while(opcao != 4):
 
     if(opcao == 1):
         #Implemente aqui a lógica da primeira escolha
-        ini = 0
-        while ini < 100:
-            if memoria[ini] == ' ':
-                print("Inicio", ini)
-                fim = ini
-                while fim < 100:
-                    if memoria[fim + 1] != ' ':
+        try:    
+            ini = 0
+            while ini < 100:
+                if memoria[ini] == ' ':
+                    print("Inicio", ini)
+                    fim = ini
+                    while fim < 100:
+                        if memoria[fim + 1] != ' ':
+                            break
+                        else:
+                            fim += 1
+                    print("Fim", fim)
+                    tamanhoburaco = fim - ini + 1
+                    print("Tamanho do buraco:", tamanhoburaco)
+                    if tamanhoburaco >= tamanho:
+                        print("Tamanho suficiente")
+                        for i in range(tamanho):
+                            memoria[ini + i] = letra
+                            print(memoria, len(memoria))
                         break
-                    else:
-                        fim += 1
-                print("Fim", fim)
-                tamanhoburaco = fim - ini + 1
-                print("Tamanho do buraco:", tamanhoburaco)
-                if tamanhoburaco >= tamanho:
-                    print("Tamanho suficiente")
-                    for i in range(tamanho):
-                        memoria[ini + i] = letra
-                        print(memoria, len(memoria))
-                    break
-                ini = fim + 1
-            ini += 1
+                    ini = fim + 1
+                ini += 1
+        except:
+            print("Não há espaço suficiente na memória, tente um item menor")
         pass
     else:
         if (opcao == 2):
